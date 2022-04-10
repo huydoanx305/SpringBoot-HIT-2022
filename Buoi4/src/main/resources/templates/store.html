@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        table, th, td {
+            margin: auto;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        th, td {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        a {
+            color: brown;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh sách user</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>FullName</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${Users}">
+                <td th:text="${item.getId()}"></td>
+                <td th:text="${item.getUsername()}"></td>
+                <td th:text="${item.getPassword()}"></td>
+                <td th:text="${item.getFullName()}"></td>
+                <td th:text="${item.getCreated()}"></td>
+                <td th:text="${item.getUpdated()}"></td>
+                <td><a th:href="@{'/edit/' + ${item.getId()}}">Edit</a></td>
+                <td><a th:href="@{'/delete/' + ${item.getId()}}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/api/users}"><h2>View All User</h2></a>
+    <a th:href="@{/signup}"><h2>Create New User</h2></a>
+</body>
+</html>

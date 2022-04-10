@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        table, th, td {
+            margin: auto;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        th, td {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        a {
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh sách user</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>FullName</th>
+            </tr>
+        </thead>
+        <tbody th:each="item : ${Users}">
+            <tr>
+                <td th:text="${item.getId()}"></td>
+                <td th:text="${item.getUsername()}"></td>
+                <td th:text="${item.getPassword()}"></td>
+                <td th:text="${item.getFullName()}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/api/users}"><h2>View All User</h2></a>
+</body>
+</html>

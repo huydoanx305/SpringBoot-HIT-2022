@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot</title>
+    <link rel="stylesheet" th:href="@{/index.css}">
+</head>
+<body>
+<Section class="login">
+    <header class="header">
+        <div class="log1">
+            <img th:src="@{/image/gg1.png}" alt="">
+        </div>
+
+        <div class="log2">
+            <img th:src="@{/image/gg.png}" alt="">
+            <div>Log in with Google</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div th:utext="${errorMessage}" style="color:red;font-style:italic;"></div>
+        <form th:action="@{/login}" class="form" method="post">
+            <div class="form-group">
+                <label>Username</label>
+                <label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="pass">
+                    <label>
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    </label>
+                    <div id="eye"><i class="fas fa-eye"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox">
+                </label>
+                <span>Remember me</span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary text-sm">Log in</button>
+            </div>
+            <a href="">Forgot Password?</a>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>Don't have an account?</p>
+        <a th:href="@{/signup}">Sign up</a>
+    </footer>
+</Section>
+</body>
+</html>
