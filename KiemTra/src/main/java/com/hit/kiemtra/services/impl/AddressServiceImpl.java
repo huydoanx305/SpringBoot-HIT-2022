@@ -11,12 +11,7 @@ import com.hit.kiemtra.services.AddressService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
 
-=======
-import javax.transaction.Transactional;
->>>>>>> dfbb0691fd98cc48224011dec9536e5c0e02cfb2
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +43,7 @@ public class AddressServiceImpl implements AddressService {
         Address address = mapper.map(addressDTO, Address.class);
         Optional<Darling> darling = darlingRepository.findById(darlingId);
         if(darling.isEmpty()) {
-            throw new InternalServerException("Province does not exist. Can't create address");
+            throw new InternalServerException("Darling does not exist. Can't create address");
         }
         address.setDarling(darling.get());
         return addressRepository.save(address);
