@@ -16,5 +16,5 @@ public interface DarlingService {
     Darling createDarling(DarlingDTO darlingDTO);
     Darling updateDarling(DarlingDTO darlingDTO, Long id);
     void deleteDarling(Long id);
-    List<Address> findDarlingByAddress(String name);
+    List<Darling> findDarlingByAddress(String name);
 }

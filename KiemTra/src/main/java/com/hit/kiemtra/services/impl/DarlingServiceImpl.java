@@ -84,16 +84,16 @@ public class DarlingServiceImpl implements DarlingService {
     }
 
     @Override
-    public List<Address> findDarlingByAddress(String name) {
-        LinkedList<Address> addresses = new LinkedList<>();
+    public List<Darling> findDarlingByAddress(String name) {
+        LinkedList<Darling> darlings = new LinkedList<>();
         List<Address> addressList = addressRepository.findAll();
         String pattern = ".*" + name.toLowerCase() + ".*";
         for(Address address : addressList) {
             if(address.getName().toLowerCase().matches(pattern)){
-                addresses.add(address);
+                darlings.add(address.getDarling());
             }
         }
-        return addresses;
+        return darlings;
     }
 
     private void checkNotFoundDarling(Optional<Darling> darling) {
