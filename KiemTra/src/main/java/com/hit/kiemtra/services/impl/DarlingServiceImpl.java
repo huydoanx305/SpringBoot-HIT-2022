@@ -28,17 +28,15 @@ public class DarlingServiceImpl implements DarlingService {
     private ModelMapper mapper;
 
     @Override
-    public List<Darling> findAllDarling() {
-        return darlingRepository.findAll();
-    }
-
-    @Override
     public List<Darling> findAllDarlingByStatusOneTwo() {
         return darlingRepository.findAllByStatusIsBetween(1, 2);
     }
 
     @Override
-    public List<Darling> findAllDarlingByStatusTwo(Integer status) {
+    public List<Darling> findAllDarlingOrFindByStatusTwo(Integer status) {
+        if(status == null) {
+            return darlingRepository.findAll();
+        }
         return darlingRepository.findAllByStatus(status);
     }
 

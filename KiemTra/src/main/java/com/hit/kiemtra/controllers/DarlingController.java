@@ -12,19 +12,14 @@ public class DarlingController {
     @Autowired
     private DarlingService darlingService;
 
-    @GetMapping("/darlings")
-    public ResponseEntity<?> findAllProvince() {
-        return ResponseEntity.ok().body(darlingService.findAllDarling());
-    }
-
     @GetMapping("/darlings/current")
     public ResponseEntity<?> findAllDarlingByStatusOneTwo() {
         return ResponseEntity.ok().body(darlingService.findAllDarlingByStatusOneTwo());
     }
 
-    @GetMapping("/darlings/status")
-    public ResponseEntity<?> findAllDarlingByStatusTwo(@RequestParam(value = "status") Integer status) {
-        return ResponseEntity.ok().body(darlingService.findAllDarlingByStatusTwo(status));
+    @GetMapping("/darlings")
+    public ResponseEntity<?> findAllDarlingOrFindByStatusTwo(@RequestParam(value = "status", required = false) Integer status) {
+        return ResponseEntity.ok().body(darlingService.findAllDarlingOrFindByStatusTwo(status));
     }
 
     @GetMapping("/darlings/{id}")
